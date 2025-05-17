@@ -364,3 +364,4 @@ FodyWeavers.xsd
 
 # Ignore local secrets
 appsetting.json
+appsetting.Development.json
