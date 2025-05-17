@@ -1,14 +1,5 @@
 {
-  "Logging": {
-    "LogLevel": {
-      "Default": "Warning"
-    }
-  },
-  "AllowedHosts": "*",
-  "JwtSettings": {
-    "Issuer": "https://localhost:44336",
-    "Audience": "https://localhost:44336",
-    "SecretKey": "JWTAuthenticationHIGHsecuredPasswordVVVp1OH7Xzyr"
-  },
-  "ConnectionStrings": { "QuickKartDBConnectionString": "Server=tcp:sqlserver-quickart-001.database.windows.net,1433;Initial Catalog=sqldb-quickart-001;Persist Security Info=False;User ID=quickart;Password=Luffy@k1ng;" }
+  "ConnectionStrings": {
+    "DefaultConnection": ""
+  }
 }

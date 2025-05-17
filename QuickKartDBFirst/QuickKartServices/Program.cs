@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using QuickKartServices;
+using Microsoft.Extensions.Configuration;
+using System;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,7 +23,19 @@ builder.Services.AddCors(options =>
 });
 
 
-builder.Configuration.AddJsonFile("appsetting.json", optional: false, reloadOnChange: true);
+builder.Configuration.AddJsonFile("appsetting.json", optional: true, reloadOnChange: true)
+    .AddJsonFile($"appsetting.{builder.Environment.EnvironmentName}.json",optional:true,reloadOnChange:true);
+
+var configuration = new ConfigurationBuilder()
+    .SetBasePath(Directory.GetCurrentDirectory())
+    .AddJsonFile("appsetting.json", optional: false, reloadOnChange: true)
+    .AddJsonFile($"appsetting.{builder.Environment.EnvironmentName}.json", optional: true)
+    .AddEnvironmentVariables()
+    .Build();
+
+builder.Services.AddDbContext<QuickKartDBContext>(options =>
+    options.UseSqlServer(configuration.GetConnectionString("QuickKartDBConnectionString")));
+
 // Add services to the container
 var jwtSettings = builder.Configuration.GetSection("JwtSettings");
 var secretKey = jwtSettings["SecretKey"];
@@ -49,7 +63,7 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddSingleton<QuickKartDBContext>();
+builder.Services.AddScoped<QuickKartDBContext>();
 builder.Services.AddScoped<TokenService>();
 builder.Services.AddTransient<IQuickKartRepository,QuickKartRepository>();
 
