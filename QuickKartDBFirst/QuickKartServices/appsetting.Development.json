@@ -6,8 +6,14 @@
   },
   "AllowedHosts": "*",
   "JwtSettings": {
-    "Issuer": "https://localhost:44336",
-    "Audience": "https://localhost:44336",
+    "Issuers": [
+      "https://localhost:44336",
+      "https://app-quickart-web-eastus-dev-001.azurewebsites.net"
+    ],
+    "Audiences": [
+      "https://localhost:44336",
+      "https://app-quickart-web-eastus-dev-001.azurewebsites.net"
+    ],
     "SecretKey": ""
   },
   "ConnectionStrings": { "QuickKartDBConnectionString": "" }
