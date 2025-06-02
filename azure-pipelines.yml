@@ -9,10 +9,10 @@ variables:
 
 steps:
 - task: UseDotNet@2
+  displayName: 'Install .NET 8 SDK'
   inputs:
     packageType: 'sdk'
-    version: '7.0.x'
-    installationPath: $(Agent.ToolsDirectory)/dotnet
+    version: '8.0.x'
 
 - task: DotNetCoreCLI@2
   displayName: 'Restore NuGet packages'
