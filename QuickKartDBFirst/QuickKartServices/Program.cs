@@ -28,7 +28,8 @@ builder.Services.AddCors(options =>
     {
         policyBuilder.WithOrigins("http://localhost:4200", "https://antojude-quickkartdb.azurewebsites.net")
             .AllowAnyHeader()
-            .AllowAnyMethod();
+            .AllowAnyMethod()
+            .AllowCredentials();
     });
 });
 
