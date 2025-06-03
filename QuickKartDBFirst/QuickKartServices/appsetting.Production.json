@@ -6,16 +6,8 @@
   },
   "AllowedHosts": "*",
   "JwtSettings": {
-    "Issuers": [
-      "https://localhost:44336",
-      "https://app-quickart-web-eastus-dev-001.azurewebsites.net",
-      "https://app-quickart-web-eastus-dev-001-ataradd2akhehseu.canadacentral-01.azurewebsites.net"
-    ],
-    "Audiences": [
-      "https://localhost:44336",
-      "https://app-quickart-web-eastus-dev-001.azurewebsites.net",
-      "https://app-quickart-web-eastus-dev-001-ataradd2akhehseu.canadacentral-01.azurewebsites.net"
-    ],
+    "Issuer": "https://app-quickart-web-eastus-dev-001.azurewebsites.net",
+    "Audience": "https://app-quickart-web-eastus-dev-001.azurewebsites.net",
     "SecretKey": ""
   },
   "ConnectionStrings": { "QuickKartDBConnectionString": "" }
