@@ -95,6 +95,18 @@ namespace QuickKartDB.DataAccessLayer
             return status;
         }
 
+        public string DeleteUser(string EmailId, string UserPassword)
+        {
+            User user= context.Users.FirstOrDefault(u=>u.EmailId == EmailId && u.UserPassword==UserPassword);
+            try
+            {
+                context.Users.Remove(user);
+                context.SaveChanges();
+                return "Deletion Success";
+            }
+            catch (Exception e) { return e.Message; }
+        }
+
         public string deleteProducts(string productID)
         {
             string msg = "";

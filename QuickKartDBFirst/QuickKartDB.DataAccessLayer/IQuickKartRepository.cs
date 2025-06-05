@@ -10,6 +10,7 @@ namespace QuickKartDB.DataAccessLayer
         string AddProducts(Product product);
         bool CheckEmailID(string emailID);
         bool DeleteCategories(byte categoryID);
+        string DeleteUser(string EmailId, string UserPassword);
         string deleteProducts(string productID);
         List<Category> GetAllCategories();
         List<Product> GetAllProducts();

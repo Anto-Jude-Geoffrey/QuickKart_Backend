@@ -130,7 +130,20 @@ namespace QuickKartServices.Controllers
             { msg = ex.Message; }
             return Json(msg);
         }
-            
+
+        [HttpDelete]
+        public IActionResult DeleteUser([FromQuery]string email, [FromQuery] string password)
+        {
+            if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password))
+                return BadRequest("Email and password must be provided.");
+            try
+            {
+                repository.DeleteUser(email, password);
+                return Ok("User deleted successfully.");
+            }
+            catch (Exception ex)
+            { return StatusCode(500, $"Error: {ex}"); }
+        }
 
     }
 }
