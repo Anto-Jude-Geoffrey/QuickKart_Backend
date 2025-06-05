@@ -88,12 +88,27 @@ namespace QuickKartServices.Controllers
         [HttpPost]
         public JsonResult AddProducts(Product product)
         {
-            bool status=false;
             string msg="";
             try
             {
                 msg = repository.AddProducts(product);
        
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            return Json(msg);
+        }
+
+        [HttpPost]
+        public JsonResult AddUsers(User user)
+        {
+            string msg = "";
+            try
+            {
+                msg = repository.AddUser(user);
+
             }
             catch (Exception ex)
             {

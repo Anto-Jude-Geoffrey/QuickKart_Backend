@@ -8,6 +8,7 @@ namespace QuickKartDB.DataAccessLayer
         public int ValidateLogin(string EmailID, string Password);
         int AddCategoryDetailUsingUSP(string categoryName, out byte categoryID);
         string AddProducts(Product product);
+        public string AddUser(User user);
         bool CheckEmailID(string emailID);
         bool DeleteCategories(byte categoryID);
         string DeleteUser(string EmailId, string UserPassword);

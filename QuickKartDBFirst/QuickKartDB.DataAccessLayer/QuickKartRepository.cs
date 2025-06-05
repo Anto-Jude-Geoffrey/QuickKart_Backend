@@ -81,6 +81,19 @@ namespace QuickKartDB.DataAccessLayer
             return status;
         }
 
+        public string AddUser(User user)
+        {
+            string status;
+            try
+            {
+                context.Users.Add(user);
+                context.SaveChanges();
+                status = "Success";
+            }
+            catch (Exception ex) { status = ex.ToString(); }
+            return status;
+        }
+
         public bool DeleteCategories(byte categoryID)
         {
             bool status = false;
